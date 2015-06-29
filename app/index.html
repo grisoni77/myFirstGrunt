@@ -4,13 +4,21 @@
     <meta charset="UTF-8">
     <title>my first grunt project</title>
 
+    <!-- build:css css/app.css -->
+    <link href="../bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link href="./css/main.css" rel="stylesheet" />
+    <!-- endbuild -->
+
     <!-- build:js js/app.js -->
     <script src="../bower_components/jquery/dist/jquery.js"></script>
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="./js/app.js"></script>
     <!-- endbuild -->
 </head>
 <body>
+    <div class="well">
     <h1 id="title"></h1>
+    </div>
 
     <script>
         App.setTitle('Titolo 2');

@@ -17,7 +17,7 @@ module.exports = function(grunt) {
             }
         },
         usemin: {
-            html: 'dist/*.html',
+            html: 'dist/*.html'
         },
         copy: {
             app: {
@@ -25,6 +25,40 @@ module.exports = function(grunt) {
                 cwd: 'app/',
                 src: ['*.html'],
                 dest: 'dist/'
+            }
+        },
+
+        concat: {
+            js: {
+                options: {
+                    separator: ";\n"
+                }
+            },
+            css: {
+                options: {
+                    separator: "\n"
+                }
+            },
+            dist: {} // provided by useminPrepare
+        },
+
+        // Filerev
+        filerev: {
+            options: {
+                encoding: 'utf8',
+                algorithm: 'md5',
+                length: 20
+            },
+            release: {
+                // filerev:release hashes(md5) all assets (images, js and css )
+                // in dist directory
+                files: [{
+                    src: [
+                        //'dist/app/images/*.{png,gif,jpg,svg}',
+                        'dist/js/*.js',
+                        'dist/css/*.css',
+                    ]
+                }]
             }
         },
 
@@ -53,10 +87,10 @@ module.exports = function(grunt) {
         'copy:app',
         'useminPrepare',
         'concat:generated',
-        //'cssmin:generated',
+        'cssmin:generated',
         'uglify:generated',
         'clean',
-        //'filerev',
+        'filerev',
         'usemin'
     ]);
 
